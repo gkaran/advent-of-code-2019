@@ -1,5 +1,5 @@
-(ns advent-of-code-2019.day2
-   (:require [clojure.java.io :as io]))
+(ns advent-of-code-2019.day2.puzzle1
+   (:require [advent-of-code-2019.tools :as tools]))
 
 (defn elof [v position offset]
   (nth v (nth v (+ position offset))))
@@ -20,12 +20,8 @@
 (defn solve [input]
   (clojure.string/join ", " (process input)))
 
-(defn read-file-lines [file]
-  (with-open [rdr (io/reader (io/resource (str "advent_of_code_2019/" file)))]
-    (doall (line-seq rdr))))
-
 (defn prepare [v]
   (assoc (assoc v 1 12) 2 2))
 
 (defn solve-for-file []
-  (solve (prepare (vec (map read-string (clojure.string/split (first (read-file-lines "day2/puzzle1-input.txt")) #"[,]"))))))
+  (solve (prepare (vec (map read-string (clojure.string/split (first (tools/read-file-lines "day2/puzzle1-input.txt")) #"[,]"))))))
